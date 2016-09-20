@@ -27,6 +27,8 @@ public class DataTypes {
 		System.out.println("d2) " + "d2 is equal to " + d2); 
 		System.out.println("d3) " + "d3 is equal to " + d3);  
 		System.out.println("d4) " + "d1 - d2 is equal to " + (d1 - d2));
+		//the reason for this error is caused by the way the computer
+		//converts to binary and then performs the operation
 		
 
 		
