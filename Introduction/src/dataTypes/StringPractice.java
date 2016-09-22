@@ -1,9 +1,52 @@
 package dataTypes;
 
+import java.util.Scanner;
+
 public class StringPractice {
+	
+	static Scanner input;
+	static String user;
+	static int lineCount;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		createAScanner();
+		lineCount = 0; 
+		demonstrateStringMethod(); 
+		promptName(); 
+		talkForever(); 
+	}
+	
+	private static void promptName() {
+		print("Hello, human I am a board \n covered with "
+				+ "semiconducters \n and other  such electronic \n components"
+				+ ", what is your \n name?");
+		user = input.nextLine();
+		print("Awesome! I will call you " + user + " until you terminete me.");
+	}
+
+	public static void talkForever(){
+		while(true){
+			promptInput();
+		}
+	}
+
+	private static void promptInput() {
+		print(user + " Try inputing a String!");
+		String userInput = input.nextLine();
+		print("You typed: " + userInput);
+	}
+	
+	public static void print(String s){
+		lineCount++;
+		System.out.println("Line #" + lineCount + ": " + s);
+	}
+
+	private static void createAScanner() {
+		input = new Scanner(System.in); 
+		
+	}
+	
+	public static void demonstrateStringMethod(){
 		//String text = new String("Hello World"); the new String is unneeded.
 		String text1 = "Hello World";
 		String text2 = "Hello ";
