@@ -32,13 +32,16 @@ public class DavidSzymanskiMain {
 			while(inLoop){
 				print("Greetings " + user + " how are you?");
 				response = getInput();
-				if(response.indexOf("good") > 0){
+				
+				if(findKeyword(response, "good" , 0)){
 					print("I'm so happy you're good!");
 				}
-				else if(response.indexOf("school") > 0){
+				
+				else if(response.indexOf("school") >= 0){
 					inLoop = false; //exists this loop
 					school.talk(); 
 				}
+				
 				else{
 					print("I'm sorry I don't understand you.");
 				}
@@ -46,6 +49,37 @@ public class DavidSzymanskiMain {
 			}
 		}
 
+		public static boolean findKeyword(String searchString, String key, int startIndex){
+			//delete white space
+			String phrase = searchString.trim();
+			//set all letters to lowerCase
+			phrase = phrase.toLowerCase();
+			key = key.toLowerCase();
+			int psn = phrase.indexOf(key);
+			//keep looking for the word until you find the right context
+			while(psn >= 0){
+				String before = " ";
+				String after = " ";
+				//if the phase does not end with this word
+				if(psn + key.length() < phrase.length()){
+					after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
+					
+				}
+				
+				if(psn > 0){
+					before = phrase.substring(psn - 1, psn).toLowerCase();
+				}
+				 
+				if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+					return true;
+				}
+				
+				psn = phrase.indexOf(key,psn+1);
+			}
+			
+			return false;
+		}
+		
 		public static String getInput(){
 			return input.nextLine();
 		}
