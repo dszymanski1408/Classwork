@@ -11,7 +11,7 @@ public class DavidSzymanskiMain {
 		static boolean inLoop;
 		static String response; 
 		static Topic school;
-		
+		static Topic like;
 
 		public static void main(String[] args) {
 			createTopics(); 
@@ -33,11 +33,22 @@ public class DavidSzymanskiMain {
 				print("Greetings " + user + " how are you?");
 				response = getInput();
 				
-				if(findKeyword(response, "good" , 0)){
-					print("I'm so happy you're good!");
+				if((findKeyword(response, "good", 0)) >= 0){
+					if(findNegation() >= 0){
+						print("Aww man that sucks"); 
+					}
+				
+					else{
+						print("I'm so happy you're good!");
+					}			
 				}
 				
-				else if(response.indexOf("school") >= 0){
+				else if((findKeyword(response, "like", 0)) >= 0){
+					inLoop = false;
+					like.talk();
+				}
+				
+				else if((findKeyword(response, "school", 0)) >= 0){
 					inLoop = false; //exists this loop
 					school.talk(); 
 				}
@@ -48,8 +59,25 @@ public class DavidSzymanskiMain {
 				
 			}
 		}
-
-		public static boolean findKeyword(String searchString, String key, int startIndex){
+		
+		private static int findNegation(){
+			if((findKeyword(response, "not", 0)) >= 0){
+				return 0;
+			}
+			else if((findKeyword(response, "no", 0)) >= 0){
+				return 1;
+			}
+				
+			else if((findKeyword(response, "never", 0)) >= 0){
+				return 2;
+			}
+			else if((findKeyword(response, "don't", 0)) >= 0) {
+				return 3;
+			}
+			else return -1;
+		}
+		
+		public static int findKeyword(String searchString, String key, int startIndex){
 			//delete white space
 			String phrase = searchString.trim();
 			//set all letters to lowerCase
@@ -63,21 +91,20 @@ public class DavidSzymanskiMain {
 				//if the phase does not end with this word
 				if(psn + key.length() < phrase.length()){
 					after = phrase.substring(psn + key.length(), psn + key.length()+1).toLowerCase();
-					
 				}
 				
 				if(psn > 0){
 					before = phrase.substring(psn - 1, psn).toLowerCase();
 				}
 				 
-				if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
-					return true;
+				if(before.compareTo("a") < 0 && after.compareTo("a") < 0){  
+					return psn; 
 				}
 				
 				psn = phrase.indexOf(key,psn+1);
 			}
 			
-			return false;
+			return -1;
 		}
 		
 		public static String getInput(){
@@ -118,5 +145,7 @@ public class DavidSzymanskiMain {
 		public static void createTopics () {
 			input = new Scanner(System.in); 
 			school = new School();
+			input = new Scanner(System.in);
+			like = new Like();
 		}
 }

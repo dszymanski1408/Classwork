@@ -11,11 +11,14 @@ public class School implements Topic {
 		while(inSchoolLoop){
 			DavidSzymanskiMain.print("Tell me about school.");
 			schoolsResponse = DavidSzymanskiMain.getInput();
-			if(schoolsResponse.indexOf("stop") >= 0){
+			if((DavidSzymanskiMain.findKeyword(schoolsResponse, "like", 0)) >= 0){
+				DavidSzymanskiMain.like.talk(); 
+			}
+			else if((DavidSzymanskiMain.findKeyword(schoolsResponse, "stop", 0)) >= 0){
 				inSchoolLoop = false;
 				DavidSzymanskiMain.talkForever(); 
 			}
-			DavidSzymanskiMain.print("Thats my favorite part about school too!");
+			else DavidSzymanskiMain.print("Thats my favorite part about school too!");
 		}
 	}
 
