@@ -20,5 +20,15 @@ public class Like implements Topic {
 			else DavidSzymanskiMain.print("Hey! I like that too!");
 		}
 	}
+
+	public boolean isTriggered(String userInput) {
+		if(DavidSzymanskiMain.findKeyword(userInput, "like", 0) >= 0){
+			return true;
+		}
+		if(DavidSzymanskiMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
 }
 

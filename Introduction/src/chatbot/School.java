@@ -21,5 +21,16 @@ public class School implements Topic {
 			else DavidSzymanskiMain.print("Thats my favorite part about school too!");
 		}
 	}
+	
+	public boolean isTriggered(String userInput) {
+		//String[] triggers = {"school", "class", "teacher"};
+		if(DavidSzymanskiMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		if(DavidSzymanskiMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
 
 }
