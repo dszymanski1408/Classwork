@@ -12,6 +12,7 @@ public class DavidSzymanskiMain {
 		static String response; 
 		static Topic school;
 		static Topic like;
+		static Topic hello;
 
 		public static void main(String[] args) {
 			createTopics(); 
@@ -32,7 +33,6 @@ public class DavidSzymanskiMain {
 			while(inLoop){
 				print("Greetings " + user + " how are you?");
 				response = getInput();
-				
 				if((findKeyword(response, "good", 0)) >= 0){
 					if(findNegation() >= 0){
 						print("Aww man that sucks"); 
@@ -42,21 +42,15 @@ public class DavidSzymanskiMain {
 						print("I'm so happy you're good!");
 					}			
 				}
-				
-				else if((findKeyword(response, "like", 0)) >= 0){
-					inLoop = false;
+				else if(like.isTriggered(response)){
 					like.talk();
 				}
-				
-				else if((findKeyword(response, "school", 0)) >= 0){
-					inLoop = false; //exists this loop
-					school.talk(); 
+				else if(hello.isTriggered(response)){
+					hello.talk();
 				}
-				
-				else{
-					print("I'm sorry I don't understand you.");
+				else if(school.isTriggered(response)){
+					school.talk();
 				}
-				
 			}
 		}
 		
@@ -145,7 +139,7 @@ public class DavidSzymanskiMain {
 		public static void createTopics () {
 			input = new Scanner(System.in); 
 			school = new School();
-			input = new Scanner(System.in);
 			like = new Like();
+			hello = new DavidHello();
 		}
 }

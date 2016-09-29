@@ -25,7 +25,7 @@ public class Like implements Topic {
 		if(DavidSzymanskiMain.findKeyword(userInput, "like", 0) >= 0){
 			return true;
 		}
-		if(DavidSzymanskiMain.findKeyword(userInput, "class", 0) >= 0){
+		if(DavidSzymanskiMain.findKeyword(userInput, "enjoy", 0) >= 0){
 			return true;
 		}
 		return false;
