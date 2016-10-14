@@ -5,34 +5,59 @@ public class arraysMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		long startTime = System.currentTimeMillis();
-		String[] someStrings = new String[100];
-		populateArray(someStrings);
-		changeString(someStrings[99]);
-		printArray(someStrings);
-		//arrayIntroMethod();
+//		
+//		String[] someStrings = new String[100];
+//		populateArray(someStrings);
+//		System.out.println("Before \"changeString\" method " + someStrings[99]);
+//		changeString(someStrings[99]);
+//		System.out.println("After \"changeString\" method " + someStrings[99]);
+//		changeArray(someStrings);
+//		System.out.println("After \"changeArray\" method " + someStrings[99]);
+//		changeArrayElement(someStrings, 99);
+//		System.out.println("After \"changeArrayElement\" method " + someStrings[99]);
+//		printArray(someStrings);
+//		//arrayIntroMethod();
+		
+		SampleElement sample = new SampleElement(10);
+		sample.increase();
+		System.out.println("The sample elemnt has" + " a number equal to " + sample.getNumber());
+		
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in " + (endTime - startTime) + " milliseconds");
 	}
 	
-	private static void changeString(String someStrings){
-		someStrings = "This string has been changed!";
-	}
-	
-	private static void printArray(String[] a) {
-		// TODO Auto-generated method stub
-		for(String s: a){
-			System.out.println(s);
-		}
-	}
-
-
-
-	private static void populateArray(String[] a) {
-		// TODO Auto-generated method stub
-		for(int index = 0; index < a.length; index++){
-			a[index] = "value " + (index+1);
-		}
-	}
+//	private static void changeArrayElement(String[] someStrings, int i) {
+//		someStrings[i] = "new item " + (i+1);
+//		
+//	}
+//
+//	private static void changeArray(String[] someStrings) {
+//		someStrings = new String[100];
+//		for(int i = 0; i < someStrings.length; i ++){
+//			someStrings[i] = "new item "+ (i+1);
+//		}
+//		
+//	}
+//
+//	private static void changeString(String someStrings){
+//		someStrings = "This string has been changed!";
+//	}
+//	
+//	private static void printArray(String[] a) {
+//		// TODO Auto-generated method stub
+//		for(String s: a){
+//			System.out.println(s);
+//		}
+//	}
+//
+//
+//
+//	private static void populateArray(String[] a) {
+//		// TODO Auto-generated method stub
+//		for(int index = 0; index < a.length; index++){
+//			a[index] = "value " + (index+1);
+//		}
+//	}
 
 
 
