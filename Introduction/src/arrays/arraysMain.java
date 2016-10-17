@@ -6,8 +6,14 @@ public class arraysMain {
 		// TODO Auto-generated method stub
 		long startTime = System.currentTimeMillis();
 //		
-//		String[] someStrings = new String[100];
-//		populateArray(someStrings);
+		int[] someStrings = new int[100];
+		populateArrayRandom(someStrings);
+		printArray(someStrings);
+		
+		int[] someDiceRolls = new int[100];
+		populateArrayRandomDice(someDiceRolls);
+		printArray(someDiceRolls);
+		checkDiceRandomViability(someDiceRolls);
 //		System.out.println("Before \"changeString\" method " + someStrings[99]);
 //		changeString(someStrings[99]);
 //		System.out.println("After \"changeString\" method " + someStrings[99]);
@@ -26,6 +32,97 @@ public class arraysMain {
 		System.out.println("Completed method in " + (endTime - startTime) + " milliseconds");
 	}
 	
+	public static void populateArrayRandomDice(int[] a) {
+		for(int index = 0; index < a.length; index++){
+			int b = (int) (((Math.random()) * 6) + 1);
+			int c = (int) (((Math.random()) * 6) + 1);
+			a[index] = b + c;
+		}
+		
+	}
+
+	public static void printArray(int[] anArray) {
+		StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < anArray.length; i++) {
+				if (i > 0) {
+					sb.append(", ");
+		        }
+		        sb.append(anArray[i]);
+		      }
+			print(sb.toString());
+	}
+	
+	public static void checkDiceRandomViability(int[] a){	
+			
+		int b = 0;
+		int c = 0;
+		int d = 0;
+		int e = 0;
+		int f = 0;
+		int g = 0;
+		int h = 0;
+		int x = 0;
+		int j = 0;
+		int k = 0;
+		int l = 0;
+		int m = 0;
+		
+		for(int i = 0; i < a.length; i++){
+			if(a[i] == 1){
+				b++;
+			}
+			else if(a[i] == 2){
+				c++;
+			}
+			else if(a[i] == 3){
+				d++;
+			}
+			else if(a[i] == 4){
+				e++;
+			}
+			else if(a[i] == 5){
+				f++;
+			}
+			else if(a[i] == 6){
+				g++;
+			}
+			else if(a[i] == 7){
+				h++;
+			}
+			else if(a[i] == 8){
+				x++;
+			}
+			else if(a[i] == 9){
+				j++;
+			}
+			else if(a[i] == 10){
+				k++;
+			}
+			else if(a[i] == 11){
+				l++;
+			}
+			else if(a[i] == 12){
+				m++;
+			}
+		}
+			
+		double n = ((double) (b/a.length) * 100);
+		double o = ((double) (c/a.length) * 100);
+		double p = ((double) (d/a.length) * 100);
+		double q = ((double) (e/a.length) * 100);
+		double r = ((double) (f/a.length) * 100);
+		double s = ((double) (g/a.length) * 100);
+		double t = ((double) (h/a.length) * 100);
+		double u = ((double) (x/a.length) * 100);
+		double v = ((double) (j/a.length) * 100);
+		double y = ((double) (k/a.length) * 100);
+		double z = ((double) (l/a.length) * 100);
+		double ab = (((double) (m/a.length)) * 100);
+			
+		print(n+"% " + o+"% " + p+"% " + q+"% " + r+"% " + s+"% " 
+				+ t+"% " + u+"% " + v+"% " + y+"% " + z+"%" + ab+"%");
+		
+	}
 //	private static void changeArrayElement(String[] someStrings, int i) {
 //		someStrings[i] = "new item " + (i+1);
 //		
@@ -52,12 +149,12 @@ public class arraysMain {
 //
 //
 //
-//	private static void populateArray(String[] a) {
-//		// TODO Auto-generated method stub
-//		for(int index = 0; index < a.length; index++){
-//			a[index] = "value " + (index+1);
-//		}
-//	}
+	public static void populateArrayRandom(int[] a) {
+		// TODO Auto-generated method stub
+		for(int index = 0; index < a.length; index++){
+			a[index] = (int) ((Math.random()) * 50);
+		}
+	}
 
 
 
@@ -103,5 +200,36 @@ public class arraysMain {
 			System.out.println(s);
 		}
 		
+	}
+	
+	public static void print(String s){
+		//create a multi-line print String
+		String  printString = "";
+		int cutoff = 35;
+		//check to see if there are words to add
+		//in other words is the length of s is greater then 0
+		while(s.length() > 0){
+			String currentLine = "";
+			String nextWord = "";
+			//while the currentLine and the nextWord are
+			//less then the cutoff, AND there are still words
+			//to add do the following loop
+			while(currentLine.length() + nextWord.length() <= cutoff && s.length() > 0){
+				//add the next word to the line
+				currentLine += nextWord;
+				//remove tha1t word
+				s = s.substring(nextWord.length());
+				//get the following word
+				int endOfWord = s.indexOf(" ");
+				//check to see if this is the last word
+				if(endOfWord == -1){
+					endOfWord = s.length() - 1;
+				}
+				//get the next word and space
+				nextWord = s.substring(0, endOfWord + 1);
+			}
+			printString += currentLine + "\n";
+		}
+		System.out.println(printString);
 	}
 }
