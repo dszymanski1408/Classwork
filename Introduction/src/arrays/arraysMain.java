@@ -1,7 +1,9 @@
 package arrays;
 
 public class arraysMain {
-
+	
+	static int[] results = new int[11];
+ 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		long startTime = System.currentTimeMillis();
@@ -14,6 +16,11 @@ public class arraysMain {
 		populateArrayRandomDice(someDiceRolls);
 		printArray(someDiceRolls);
 		checkDiceRandomViability(someDiceRolls);
+		printResultsArray(results);
+		
+		String[] someCardDeck = new String[52];
+		populateCardArray(someCardDeck);
+		printStringArray(someCardDeck);
 //		System.out.println("Before \"changeString\" method " + someStrings[99]);
 //		changeString(someStrings[99]);
 //		System.out.println("After \"changeString\" method " + someStrings[99]);
@@ -32,6 +39,32 @@ public class arraysMain {
 		System.out.println("Completed method in " + (endTime - startTime) + " milliseconds");
 	}
 	
+	private static void printResultsArray(int[] results2) {
+		for(int i = 0; i < results2.length; i++){
+			System.out.println((i+2) );
+		}
+		
+	}
+
+	private static void populateCardArray(String[] cards) {
+		String[] typeOfCards = {"Hearts", "Clubs", "Spades", "Diamonds"};
+		String[] cardValue = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+					"Jack", "Queen", "King", "Ace"};
+		int numOfCards = 0;
+		for(int i = 0; i < typeOfCards.length; i++){
+			for(int j = 0; j < cardValue.length; j++){
+				cards[numOfCards] = cardValue[j] + " of " + typeOfCards[i];
+				numOfCards++;
+			}
+		}	
+	}
+
+	private static void checkDiceRandomViability(int[] rolls) {
+		for(int i = 0; i < rolls.length; i++){
+			results[rolls[i]-2]++;
+		}
+	}
+
 	public static void populateArrayRandomDice(int[] a) {
 		for(int index = 0; index < a.length; index++){
 			int b = (int) (((Math.random()) * 6) + 1);
@@ -52,77 +85,17 @@ public class arraysMain {
 			print(sb.toString());
 	}
 	
-	public static void checkDiceRandomViability(int[] a){	
-			
-		int b = 0;
-		int c = 0;
-		int d = 0;
-		int e = 0;
-		int f = 0;
-		int g = 0;
-		int h = 0;
-		int x = 0;
-		int j = 0;
-		int k = 0;
-		int l = 0;
-		int m = 0;
-		
-		for(int i = 0; i < a.length; i++){
-			if(a[i] == 1){
-				b++;
-			}
-			else if(a[i] == 2){
-				c++;
-			}
-			else if(a[i] == 3){
-				d++;
-			}
-			else if(a[i] == 4){
-				e++;
-			}
-			else if(a[i] == 5){
-				f++;
-			}
-			else if(a[i] == 6){
-				g++;
-			}
-			else if(a[i] == 7){
-				h++;
-			}
-			else if(a[i] == 8){
-				x++;
-			}
-			else if(a[i] == 9){
-				j++;
-			}
-			else if(a[i] == 10){
-				k++;
-			}
-			else if(a[i] == 11){
-				l++;
-			}
-			else if(a[i] == 12){
-				m++;
-			}
-		}
-			
-		double n = ((double) (b/a.length) * 100);
-		double o = ((double) (c/a.length) * 100);
-		double p = ((double) (d/a.length) * 100);
-		double q = ((double) (e/a.length) * 100);
-		double r = ((double) (f/a.length) * 100);
-		double s = ((double) (g/a.length) * 100);
-		double t = ((double) (h/a.length) * 100);
-		double u = ((double) (x/a.length) * 100);
-		double v = ((double) (j/a.length) * 100);
-		double y = ((double) (k/a.length) * 100);
-		double z = ((double) (l/a.length) * 100);
-		double ab = (((double) (m/a.length)) * 100);
-			
-		print(n+"% " + o+"% " + p+"% " + q+"% " + r+"% " + s+"% " 
-				+ t+"% " + u+"% " + v+"% " + y+"% " + z+"%" + ab+"%");
-		
+	public static void printStringArray(String[] anArray) {
+		StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < anArray.length; i++) {
+				if (i > 0) {
+					sb.append(", ");
+		        }
+		        sb.append(anArray[i]);
+		      }
+			print(sb.toString());
 	}
+	
 //	private static void changeArrayElement(String[] someStrings, int i) {
 //		someStrings[i] = "new item " + (i+1);
 //		
