@@ -1,6 +1,6 @@
 package arrays;
 
-public class arraysMain {
+public class ArraysMain {
 	
 	static int[] results = new int[11];
  
