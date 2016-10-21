@@ -4,27 +4,62 @@ public class CodeboardFirstTrials {
 
 	public static void main(String[] args) {
 		int[] numberArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-		isSorted(numberArray);
-		System.out.print(isSorted(numberArray));
+		int [] numberArray2 = {1, 2, 3, 4, 5, 6, 8, 9, 11, 10};
+		System.out.println(isSorted(numberArray));
+		System.out.println(countDifferences(numberArray, numberArray2));
+		
+		System.out.println(checkHalfway(numberArray, 9, 0, numberArray.length));
 		
 		reverseOrder(numberArray);
+		
+		swap(numberArray, 0, numberArray.length -1);
+		
+		shuffle(numberArray);
+		
+		
 	}
 	
-    public static boolean isSorted(int[] array){ 
+    private static void shuffle(int[] numberArray) {
+		for(int i = 0; i < numberArray.length; i++){
+			int random = (int) (Math.random() * 6);
+			swap(numberArray, i, random);	
+		}
+		printArray(numberArray);
+	}
+
+	private static void swap(int[] numberArray, int i, int j) {
+		int placeholder = numberArray[j];
+		numberArray[j] = numberArray[i];
+		numberArray[i] = placeholder;
+		
+	}
+
+	private static boolean checkHalfway(int[] numberArray, int query, int start, int end) {
+		return query < numberArray[(start+end+1)/2];
+	}
+
+	public static boolean isSorted(int[] array){ 
          for(int i = 1; i < array.length; i++){
-             if(array[i] < array[i - 1]){
+             if(array[i] <= array[i - 1]){
             	 return false;
              }
          } 
          return true;
     }
     
+    public static int countDifferences(int[] array1, int[] array2){
+    		
+     return 0;
+    }
+    
     public static void reverseOrder(int[] array){
-    	int[] newArray = new int[array.length];
-    	for(int i = 0; i < array.length; i++){
-    		newArray[(array.length - 1) - i] = array[i];
+    	for(int i = 0; i < (int) (array.length/2); i++){
+    		int toSwitch = array[i];
+    		int beingSwitched = array[array.length-i-1];
+    		array[i] = beingSwitched;
+    		array[(array.length - 1) - i] = toSwitch;
     	}
-    	printArray(newArray);
+    	printArray(array);
     }
     
 	public static void printArray(int[] anArray) {
