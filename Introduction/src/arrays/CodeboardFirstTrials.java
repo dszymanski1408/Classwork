@@ -14,18 +14,45 @@ public class CodeboardFirstTrials {
 		
 		swap(numberArray, 0, numberArray.length -1);
 		
-		shuffle(numberArray);
+		reverseOrder(numberArray);
 		
-		
+		cycleTheIntArray(numberArray, 4);
 	}
-	
-    private static void shuffle(int[] numberArray) {
-		for(int i = 0; i < numberArray.length; i++){
-			int random = (int) (Math.random() * 6);
-			swap(numberArray, i, random);	
+    
+	private static void cycleTheIntArray(int[] numberArray, int i) {
+		for(int s = 0; s < i; s++){
+			for(int j = 0; j < numberArray.length-1; j++){
+				int placeHolder = numberArray[j];
+				int placeHolderTwo = numberArray[j+1];
+				numberArray[j] = placeHolderTwo;
+				numberArray[j + 1] = placeHolder;
+			}
 		}
 		printArray(numberArray);
 	}
+
+	public static int[] generateDistinctItemsList(int n){
+        /**
+         * This method needs to generate an int[] of length n that contains distinct, random integers
+         * between 1 and 2n 
+         * The method will be tested by verifying that the array you return is n items long,
+         * contains only entries between 1 and 2n (inclusive) and has no duplicates
+         * 
+         * */
+		int[] randomNonrepeating = new int[n];
+		for(int i = 0; i < randomNonrepeating.length; i++){
+			int firstOne = (int) (((Math.random()) * (2*n)) + 1);
+			
+		}
+        return null; 
+	}
+	
+//    private static void shuffle(int[] numberArray) {
+//		for(int i = 0; i < numberArray.length-1; i++){
+//			swap(numberArray, i, i + 1);	
+//		}
+//		printArray(numberArray);
+//	}
 
 	private static void swap(int[] numberArray, int i, int j) {
 		int placeholder = numberArray[j];
@@ -39,8 +66,8 @@ public class CodeboardFirstTrials {
 	}
 
 	public static boolean isSorted(int[] array){ 
-         for(int i = 1; i < array.length; i++){
-             if(array[i] <= array[i - 1]){
+         for(int i = 0; i < array.length-1; i++){
+             if(!(array[i] <= array[i + 1])){
             	 return false;
              }
          } 
@@ -48,8 +75,13 @@ public class CodeboardFirstTrials {
     }
     
     public static int countDifferences(int[] array1, int[] array2){
-    		
-     return 0;
+    	int incorrectCount = 0;
+    	for(int i = 0; i < array1.length; i++){
+    		if(array1[i] != array2[i]){
+    			incorrectCount++;
+    		}
+    	}
+     return incorrectCount;
     }
     
     public static void reverseOrder(int[] array){
