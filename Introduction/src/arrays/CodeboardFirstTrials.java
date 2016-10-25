@@ -5,9 +5,16 @@ public class CodeboardFirstTrials {
 	public static void main(String[] args) {
 		int[] numberArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		int [] numberArray2 = {1, 2, 3, 4, 5, 6, 8, 9, 11, 10};
+		int [] numberArray3 = {1, 2, 3, 7, 1, 2, 3, 4, 5, 6, 7, 8};
 		System.out.println(isSorted(numberArray));
+		
+		System.out.println(longestSharedSequence(numberArray, numberArray2));
+		
 		System.out.println(binarySearch(numberArray, 2));
+		
 		System.out.println(countDifferences(numberArray, numberArray2));
+		
+		System.out.println(longestConsecutiveSequence(numberArray3));
 		
 		System.out.println(checkHalfway(numberArray, 9, 0, numberArray.length));
 		
@@ -21,9 +28,28 @@ public class CodeboardFirstTrials {
 		
 		printArray(generateDistinctItemsList(100));
 		
-		consecutiveSequence(numberArray, numberArray2);
+		
+		
+		printArray(getSubArray(numberArray, 2, 8));
+		
+		System.out.println(contains(numberArray, getSubArray(numberArray, 2, 8)));
 	}
 	
+	private static int longestSharedSequence(int[] arr, int[] arr2) {
+		int countSequence = 0;
+		int longestSequence = 0;
+		for(int i = 0; i < arr.length-1; i++){
+			if(arr[i] == arr2[i]){
+				countSequence++;
+				if(longestSequence < countSequence){
+					longestSequence = countSequence;
+				}
+			}
+			else countSequence = 1;
+		}
+		return longestSequence;
+	}
+
 	public static int countUnderBound(double[] arr, double d){
 		int indexOfNumber = 0;
 		for(int i = 0; i < arr.length; i++){
@@ -34,11 +60,47 @@ public class CodeboardFirstTrials {
 		return indexOfNumber;
 	}
     
-	private static void consecutiveSequence(int[] numberArray, int[] numberArray2) {
-		// TODO Auto-generated method stub
-		
+	private static int longestConsecutiveSequence(int[] nA) {
+		int countSequence = 1;
+		int longestSequence = 1;
+		for(int i = 0; i < nA.length-1; i++){
+			if(nA[i] == nA[i+1]-1){
+				countSequence++;
+				if(longestSequence < countSequence){
+					longestSequence = countSequence;
+				}
+			}
+			else countSequence = 1;
+		}
+		return longestSequence;
 	}
 
+	public static int[] getSubArray(int[] arr, int startIndex, int endIndex){
+		int[] array1 = new int[endIndex - startIndex + 1];
+		for(int i = 0; i < array1.length; i++){
+			array1[i] = arr[startIndex + i];
+		}
+		return array1;
+	}
+	
+	public static boolean contains(int[] arr, int[] subArr){
+		for(int i =0; i < arr.length; i++){
+			if(arr[i] == subArr[0]){
+				int j = 0;
+				while(j < subArr.length){
+					if(subArr[j] == arr[i + j] && j == subArr.length-1){
+						return true;		
+					}
+					else if(subArr[j] != arr[i+j]){
+						break;
+					}
+					j++;
+				}
+			}
+		}
+		return false;
+	}	
+	
 	private static int binarySearch(int[] numberArray, int key) {
 		int low = 0;
 		int high = numberArray.length - 1;
