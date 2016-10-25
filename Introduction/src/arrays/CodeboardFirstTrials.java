@@ -6,6 +6,7 @@ public class CodeboardFirstTrials {
 		int[] numberArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		int [] numberArray2 = {1, 2, 3, 4, 5, 6, 8, 9, 11, 10};
 		System.out.println(isSorted(numberArray));
+		System.out.println(binarySearch(numberArray, 2));
 		System.out.println(countDifferences(numberArray, numberArray2));
 		
 		System.out.println(checkHalfway(numberArray, 9, 0, numberArray.length));
@@ -17,8 +18,37 @@ public class CodeboardFirstTrials {
 		reverseOrder(numberArray);
 		
 		cycleTheIntArray(numberArray, 4);
+		
+		printArray(generateDistinctItemsList(100));
+		
+		consecutiveSequence(numberArray, numberArray2);
 	}
     
+	private static void consecutiveSequence(int[] numberArray, int[] numberArray2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static int binarySearch(int[] numberArray, int key) {
+		int low = 0;
+		int high = numberArray.length - 1;
+			          
+		while(high >= low) {
+			int middle = (low + high) / 2; 
+			if(numberArray[middle] == key) {
+				return middle;
+			}
+			if(numberArray[middle] < key) {
+				low = middle + 1;
+			}
+			if(numberArray[middle] > key) {
+				high = middle - 1;
+			}
+		}
+		
+		return -1;		
+	}
+
 	private static void cycleTheIntArray(int[] numberArray, int i) {
 		for(int s = 0; s < i; s++){
 			for(int j = 0; j < numberArray.length-1; j++){
@@ -32,19 +62,18 @@ public class CodeboardFirstTrials {
 	}
 
 	public static int[] generateDistinctItemsList(int n){
-        /**
-         * This method needs to generate an int[] of length n that contains distinct, random integers
-         * between 1 and 2n 
-         * The method will be tested by verifying that the array you return is n items long,
-         * contains only entries between 1 and 2n (inclusive) and has no duplicates
-         * 
-         * */
-		int[] randomNonrepeating = new int[n];
-		for(int i = 0; i < randomNonrepeating.length; i++){
-			int firstOne = (int) (((Math.random()) * (2*n)) + 1);
-			
+		int[] a = new int[n];
+		for (int i = 0; i < n; i++) {
+		    a[i] = (int)(Math.random()* (2 * n) + 1);
+
+		    for (int j = 0; j < i; j++) {
+		        if (a[i] == a[j]) {
+		            i--; 
+		            break;
+		        }
+		    }  
 		}
-        return null; 
+		return a;
 	}
 	
 //    private static void shuffle(int[] numberArray) {
