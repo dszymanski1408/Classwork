@@ -23,6 +23,16 @@ public class CodeboardFirstTrials {
 		
 		consecutiveSequence(numberArray, numberArray2);
 	}
+	
+	public static int countUnderBound(double[] arr, double d){
+		int indexOfNumber = 0;
+		for(int i = 0; i < arr.length; i++){
+			if(arr[i] > d){
+				indexOfNumber++;
+			}
+		}
+		return indexOfNumber;
+	}
     
 	private static void consecutiveSequence(int[] numberArray, int[] numberArray2) {
 		// TODO Auto-generated method stub
