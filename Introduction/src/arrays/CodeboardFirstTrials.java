@@ -8,7 +8,7 @@ public class CodeboardFirstTrials {
 		int [] numberArray3 = {1, 2, 3, 7, 1, 2, 3, 4, 5, 6, 7, 8};
 		System.out.println(isSorted(numberArray));
 		
-		System.out.println(longestSharedSequence(numberArray, numberArray2));
+		System.out.println(longestSharedSequence(numberArray, numberArray3));
 		
 		System.out.println(binarySearch(numberArray, 2));
 		
@@ -36,29 +36,35 @@ public class CodeboardFirstTrials {
 	}
 	
 	private static int longestSharedSequence(int[] arr, int[] arr2) {
-		// longestCommonSubstring
-//   		int Start = 0;
-//     		int Max = 0;
-//     		for (int i = 0; i < S1.length(); i++)
-//     		{
-//         	for (int j = 0; j < S2.length(); j++)
-//         	{
-//             	int x = 0;
-//            	while (S1.charAt(i + x) == S2.charAt(j + x))
-//             	{
-//                 	x++;
-//                 	if (((i + x) >= S1.length()) || ((j + x) >= S2.length())) break;
-//             	}
-//             	if (x > Max)
-//             	{
-//                 	Max = x;
-//                 	Start = i;
-//            	}
-//          	}
-//     		}
-//     		return S1.substring(Start, (Start + Max));
-// 		}
-	}
+		 //longestCommonSubstring
+   		int Start = 0;
+     	int Max = 0;
+     	for (int i = 0; i < arr.length; i++){
+     		for (int j = 0; j < arr2.length; j++){
+             	int x = 0;
+            	while (arr[i + x] == arr2[j + x]){
+                 	x++;
+                 	if (((i + x) >= arr.length) || ((j + x) >= arr2.length)) break;
+             	}
+             	if (x > Max){
+                 	Max = x;
+                 	Start = i;
+            	}
+          	}
+     	}   		
+     	
+     		int[] array1 = new int[Start - (Start + Max - 1) + 1];
+    		for(int i = 0; i < array1.length; i++){
+    			array1[i] = arr[Start + i];
+    		}
+     	
+     	
+     	return{
+ 
+     	}
+     	}
+ 	}
+	
 
 	public static int countUnderBound(double[] arr, double d){
 		int indexOfNumber = 0;
