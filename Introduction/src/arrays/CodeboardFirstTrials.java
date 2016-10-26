@@ -34,6 +34,83 @@ public class CodeboardFirstTrials {
 		
 		System.out.println(contains(numberArray, getSubArray(numberArray, 2, 8)));
 	}
+		public static double[] getStats(double[] array){
+	     double[] stats = new double[6];
+	         stats[0] = findMean(array);
+	         stats[1] = findMax(array);
+	         stats[2] = findMin(array);
+	         stats[3] = findMed(array);
+	         stats[4] = findGreaterMean(array, findMean(array));
+	         stats[5] = findLessMean(array, findMean(array));
+	     return stats;
+	}
+	private static double findLessMean(double[] array, double mean) {
+	    	double lessMean = 0.00;
+	    	for(int i =0; i <array.length; i++)
+	    	{
+	    		if(array[i] < mean )
+	    		{
+	    			lessMean++;
+	    		}
+	    	}
+			return lessMean;
+		}
+		private static double findGreaterMean(double[] array, double mean) {
+			double greaterMean = 0.00;
+	    	for(int i =0; i <array.length; i++)
+	    	{
+	    		if(array[i] > mean || array[i] == mean)
+	    		{
+	    			greaterMean++;
+	    		}
+	    	}
+			return greaterMean;
+		}
+		private static double findMed(double[] array) {
+			double median = 0.00;
+			sortArray(array);
+			if(array.length % 2 == 0)
+			{
+				median = ((double)array[array.length/2] + (double)array[array.length/2 - 1])/2;
+			}
+			else
+			{	
+				median = (double) array[array.length/2];
+			}
+			return median;
+		}
+		private static void sortArray(double[] array) {
+			for (int i = 0; i<array.length;i++)
+			{
+				for(int j = i+1; j<array.length; j++)
+				{
+					double temp = array[i];
+					double temp2 = array[j];
+					
+					if(temp > temp2)
+					{
+						array[i] = temp2;
+						array[j] = temp;
+					}
+				}
+			}
+		}
+		private static double findMin(double[] array) {
+	    	sortArray(array);
+			return array[0];
+		}
+		private static double findMax(double[] array) {
+	    	sortArray(array);
+			return array[array.length-1];
+		}
+		private static double findMean(double[] array) {
+	    	double mean = 0.00;
+			for(int i = 0; i<array.length; i++)
+			{
+				mean = mean + array[i];
+			}
+			return mean/array.length;
+		}
 	
     public static int longestSharedSequence(int[] arr, int[] arr2){
    	int start = 0;
