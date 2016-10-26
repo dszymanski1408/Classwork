@@ -35,37 +35,30 @@ public class CodeboardFirstTrials {
 		System.out.println(contains(numberArray, getSubArray(numberArray, 2, 8)));
 	}
 	
-	private static int longestSharedSequence(int[] arr, int[] arr2) {
-		 //longestCommonSubstring
-   		int Start = 0;
-     	int Max = 0;
-     	for (int i = 0; i < arr.length; i++){
-     		for (int j = 0; j < arr2.length; j++){
+    public static int longestSharedSequence(int[] arr, int[] arr2){
+   	int start = 0;
+     	int max = 0;
+     	for(int i = 0; i < arr.length; i++){
+     		for(int j = 0; j < arr2.length; j++){
              	int x = 0;
-            	while (arr[i + x] == arr2[j + x]){
+            	while(arr[i + x] == arr2[j + x]){
                  	x++;
-                 	if (((i + x) >= arr.length) || ((j + x) >= arr2.length)) break;
+                 	if(((i + x) >= arr.length) || ((j + x) >= arr2.length)) break;
              	}
-             	if (x > Max){
-                 	Max = x;
-                 	Start = i;
+             	if(x > max){
+                 	max = x;
+                 	start = i;
             	}
           	}
-     	}   		
-     	
-     		int[] array1 = new int[Start - (Start + Max - 1) + 1];
-    		for(int i = 0; i < array1.length; i++){
-    			array1[i] = arr[Start + i];
-    		}
-     	
-     	
-     	return{
- 
      	}
-     	}
- 	}
-	
-
+     	int endIndex = (start + max - 1);
+     	int startIndex = start;
+		int[] array1 = new int[endIndex - startIndex + 1];
+		for(int i = 0; i < array1.length; i++){
+			array1[i] = arr[startIndex + i];
+		}
+		return array1.length;
+    	}
 	public static int countUnderBound(double[] arr, double d){
 		int indexOfNumber = 0;
 		for(int i = 0; i < arr.length; i++){
