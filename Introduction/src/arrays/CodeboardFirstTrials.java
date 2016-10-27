@@ -6,6 +6,7 @@ public class CodeboardFirstTrials {
 		int[] numberArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		int [] numberArray2 = {1, 2, 3, 4, 5, 6, 8, 9, 11, 10};
 		int [] numberArray3 = {1, 2, 3, 7, 1, 2, 3, 4, 5, 6, 7, 8};
+		String[] primeTestual = new String[100];
 		System.out.println(isSorted(numberArray));
 		
 		System.out.println(longestSharedSequence(numberArray, numberArray3));
@@ -28,12 +29,52 @@ public class CodeboardFirstTrials {
 		
 		printArray(generateDistinctItemsList(100));
 		
-		
+		printArray(populateArrayNoDuplicate(numberArray));
 		
 		printArray(getSubArray(numberArray, 2, 8));
 		
 		System.out.println(contains(numberArray, getSubArray(numberArray, 2, 8)));
+		
+		testPrimes(50);
 	}
+	
+	public static int[] populateArrayNoDuplicate(int[] arr){
+		int[] randArr = new int[arr.length - 2];
+		for(int i = 0; i < randArr.length; i++){
+			randArr[i] = arr[(int) (Math.random() * (arr.length - 1) + 1)];
+			for (int j = 0; j < i; j++) {
+		        if (randArr[i] == randArr[j]) {
+		            i--; 
+		            break;
+		        }
+			}
+		}
+		return randArr;
+	}
+	
+	public static void testPrimes(int numberToTest){
+		int lastToCheck = (int) (Math.sqrt(numberToTest));
+		boolean[] theNumbers = new boolean[numberToTest];
+		for(int i = 0; i < numberToTest; i++){
+			theNumbers[i] = true;
+		}
+		theNumbers[0] = false;
+		theNumbers[1] = false;
+		int increment = 2;
+		boolean first = true;
+		for(int j = 2; j < numberToTest; j = j + increment){
+			if(!first){
+				theNumbers[j] = false;
+			}
+			else first = false;
+		}
+		for(int i = 0; i < theNumbers.length; i++){
+			if(theNumbers[i]){
+				System.out.println(i + " is prime.");
+			}
+		}
+	}
+	
 		public static double[] getStats(double[] array){
 	     double[] stats = new double[6];
 	         stats[0] = findMean(array);
@@ -136,7 +177,9 @@ public class CodeboardFirstTrials {
 		}
 		return array1.length;
     	}
-	public static int countUnderBound(double[] arr, double d){
+	
+    
+    public static int countUnderBound(double[] arr, double d){
 		int indexOfNumber = 0;
 		for(int i = 0; i < arr.length; i++){
 			if(arr[i] < d){
