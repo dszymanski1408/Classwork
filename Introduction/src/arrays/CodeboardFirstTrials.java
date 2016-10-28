@@ -60,13 +60,13 @@ public class CodeboardFirstTrials {
 		}
 		theNumbers[0] = false;
 		theNumbers[1] = false;
-		int increment = 2;
-		boolean first = true;
-		for(int j = 2; j < numberToTest; j = j + increment){
-			if(!first){
-				theNumbers[j] = false;
+		
+		for(int prime = 2; prime < lastToCheck; prime++){
+			if(theNumbers[prime]){
+				for(int test = 2 * prime; test < numberToTest; test = test + prime){
+						theNumbers[test] = false;
+				}
 			}
-			else first = false;
 		}
 		for(int i = 0; i < theNumbers.length; i++){
 			if(theNumbers[i]){
