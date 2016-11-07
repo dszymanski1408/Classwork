@@ -6,9 +6,40 @@ public class Practice {
 		mineCrafter(minecraft, 10);
 		String[][] field = new String[minecraft.length][minecraft[0].length];
 		matchValues(field, minecraft);
-		print2DArr(field);
+		
+		String[][] grid = new String[13][16];
+		createGrid(grid);
+		print2DArr(grid);
 	}
 	
+	private static void createGrid(String[][] grid) {
+		for(int r = 0; r < grid.length; r++){
+			for(int c = 0; c < grid[r].length; c++){
+					grid[r][c] = " ";
+			}
+		}
+		
+
+		for(int a = 0; a < grid[0].length; a++){
+			grid[0][a] = "_";
+		}
+		for(int row = 1; row < grid.length; row++){
+			for(int col = 0; col < grid[row].length; col += 3){
+				grid[row][col] = "|";
+			}
+		}
+		for(int r = 0; r < grid.length; r += 2){
+			for(int c = 0; c < grid[r].length; c++){
+				if(grid[r][c] == " "){
+					grid[r][c] = "_";
+				}
+			}
+		}
+		
+		grid[0][0] = " ";
+		grid[0][grid[0].length -1] = " ";
+	}
+
 	private static void matchValues(String[][] field, boolean[][] minecraft) {
 		for(int row = 0; row < field.length; row++){
 			for(int col = 0; col < field[0].length; col++){
@@ -22,16 +53,28 @@ public class Practice {
 
 	private static String countAdjacent(boolean[][] minecraft, int r, int c) {
 		int count = 0;
-		for(int row = r - 1; row <= r + 1; row++){
-			for(int col = c - 1; col <= c + 1; col++){
-				if(row != r && col != c){
-					if(row >= 0 && row < minecraft.length && col >= 0 && col < minecraft[0].length){
-						
-					}
-				}
-			}
-		}
-		return null;
+//		for(int row = r - 1; row <= r + 1; row++){
+//			for(int col = c - 1; col <= c + 1; col++){
+//				if(row != r && col != c){
+//					if(row >= 0 && row < minecraft.length && col >= 0 && col < minecraft[0].length){
+//						if(minecraft[row][col]){
+//							count++;
+//						}
+//					}
+//				}
+//			}
+//		}
+		
+		//this method only checks elements in the [][]
+		//so it is nessesary to verify they are valid
+//		for(int row = 0; row < minecraft.length; row++){
+//			for(int col = 0; col < minecraft[row].length; col++){
+//				if(Math.abs(row - r) + Math.abs(col - c) == 1 && minecraft[row][col]){
+//					count++;
+//				}
+//			}
+//		}
+		return count + "";
 	}
 
 	private static void mineCrafter(boolean[][] minecraft, int numberOfMines) {
