@@ -28,7 +28,7 @@ public class Practice {
 				grid[row][col] = "|";
 			}
 		}
-		for(int r = 0; r < grid.length; r += 2){
+		for(int r = 0; r < grid.length; r += 3){
 			for(int c = 0; c < grid[r].length; c++){
 				if(grid[r][c] == " "){
 					grid[r][c] = "_";
