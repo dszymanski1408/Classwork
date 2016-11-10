@@ -9,6 +9,8 @@ public class ConnectFour {
 	public static boolean inLoop;
 	
 	public static void main(String[] args) {
+		in = new Scanner(System.in);
+		
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col++){
 				grid[row][col] = " ";
@@ -29,6 +31,7 @@ public class ConnectFour {
 					if(!grid[row][colNum].equals("O")){
 							grid[row][colNum] = "O";
 							print2DArr(grid);
+							break;
 					}
 				}
 
