@@ -28,7 +28,7 @@ public class CaveExplorer {
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door());
 		startExploring();
 	}
-
+//you could at least close this. 
 	private static void startExploring() {
 		// TODO Auto-generated method stub
 		while(true){
