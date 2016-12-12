@@ -1,40 +1,53 @@
 package gui.components;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public abstract class Components implements Visible {
+	
+	private int x;
+	private int y;
+	private int w;
+	private int h;
+	private BufferedImage image;
 
-	public Components() {
+	public Components(int x, int y, int w, int h) {
 		// TODO Auto-generated constructor stub
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+		update(image.createGraphics());
 	}
 
 	public BufferedImage getImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return image;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public int getWidth() {
 		// TODO Auto-generated method stub
-		return 0;
+		return w;
 	}
 
 	@Override
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return h;
 	}
 
 	@Override
@@ -46,7 +59,14 @@ public abstract class Components implements Visible {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-
+		update(image.createGraphics());
+	}
+	
+	public abstract void update(Graphics2D g);
+	
+	public Graphics2D clear(){
+		image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+		return image.createGraphics();
 	}
 
 }
