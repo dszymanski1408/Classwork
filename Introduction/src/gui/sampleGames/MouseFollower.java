@@ -27,8 +27,6 @@ public class MouseFollower extends GUIApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new MouseFollower(800,600);
-		int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-		int mouseY = MouseInfo.getPointerInfo().getLocation().y;
 	}
 
 }

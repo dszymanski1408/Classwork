@@ -17,6 +17,7 @@ public class TextLabel extends Components {
 		this.text = text;
 		this.font = "Helvetica";
 		this.size = 20;
+		update();
 	}
 
 	public String getText() {
@@ -41,6 +42,7 @@ public class TextLabel extends Components {
 
 	public void setSize(int size) {
 		this.size = size;
+		update();
 	}
 
 	@Override
