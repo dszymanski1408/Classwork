@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public abstract class GUIApplication extends JFrame{
+public abstract class GUIApplication extends JFrame implements Runnable{
 //fields
 	private Screen currentScreen;
 	
@@ -24,6 +24,27 @@ public abstract class GUIApplication extends JFrame{
 	}
 	
 	public void setScreen(Screen s){
+		if(currentScreen != null){
+			addMouseListener(currentScreen.getMouseListener());
+			addMouseMotionListener(currentScreen.getMouseMotionListener());
+		}
 		currentScreen = s;
+		if(currentScreen != null){
+			addMouseListener(currentScreen.getMouseListener());
+			addMouseMotionListener(currentScreen.getMouseMotionListener());
+		}
+	}
+	
+	public void run(){
+		while(true){
+			currentScreen.update();
+			repaint();
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
