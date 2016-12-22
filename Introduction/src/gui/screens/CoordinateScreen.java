@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import gui.Screen;
 import gui.components.Button;
+import gui.components.ClickableGraphic;
 import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.Action;
@@ -25,6 +26,7 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 	private TextLabel text;
 	private TextArea area;
 	private Graphic antz;
+	private ClickableGraphic antz2;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -51,9 +53,20 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 				+ "this is a crazy amount of shiett.");
 		viewObjects.add(area);
 		
-		antz = new Graphic(20,300,"resources/" + "sampleImages/antz.jpg");
+//		antz = new Graphic(20,300,"resources/" + "sampleImages/antz.jpg");
+//		
+//		viewObjects.add(antz);
 		
-		viewObjects.add(antz);
+		antz2 = new ClickableGraphic(20,300, "resources/sampleImages/antz.jpg", new Action(){
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
+			}
+			
+		});
+		
+		viewObjects.add(antz2);
 	}
 
 	public void mouseDragged(MouseEvent e) {
@@ -80,6 +93,9 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 		// TODO Auto-generated method stub
 		if(button.isHovered(e.getX(), e.getY())){
 			button.act();
+		}
+		if(antz2.isHovered(e.getX(), e.getY())){
+			antz2.act();
 		}
 	}
 
