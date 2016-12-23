@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 public class ClickableGraphic extends Graphic implements Clickable{
 	
-	private Action act;
+	private Action action;
 	private int x;
 	private int y;
 
@@ -43,13 +43,13 @@ public class ClickableGraphic extends Graphic implements Clickable{
 	@Override
 	public void act() {
 		// TODO Auto-generated method stub
-		if(this.act != null){
-			this.act.act();
+		if(action != null){
+			action.act();
 		}
 	}
 	
 	public void setAction(Action a){
-		a = act;
+		this.action = a;
 	}
 	
 
