@@ -68,6 +68,8 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable {
 					moles.remove(mole);
 				}
 			});
+			addObject(mole);
+			moles.add(mole);
 		}
 	}
 
