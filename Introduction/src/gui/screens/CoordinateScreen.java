@@ -57,16 +57,6 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 //		
 //		viewObjects.add(antz);
 		
-		antz2 = new ClickableGraphic(20,300, "resources/sampleImages/antz.jpg", new Action(){
-			@Override
-			public void act() {
-				// TODO Auto-generated method stub
-				MouseFollower.game.setScreen(MouseFollower.myScreen);
-			}
-			
-		});
-		
-		viewObjects.add(antz2);
 	}
 
 	public void mouseDragged(MouseEvent e) {

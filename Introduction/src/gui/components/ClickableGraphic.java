@@ -9,28 +9,25 @@ public class ClickableGraphic extends Graphic implements Clickable{
 	private int x;
 	private int y;
 
-	public ClickableGraphic(int x, int y, String imageLocation, Action action) {
+	public ClickableGraphic(int x, int y, String imageLocation) {
 		super(x, y, imageLocation);
 		// TODO Auto-generated constructor stub\
 		this.x = x;
 		this.y = y;
-		setAction(action); 
 	}
 
-	public ClickableGraphic(int x, int y, int w, int h, String imageLocation, Action action) {
+	public ClickableGraphic(int x, int y, int w, int h, String imageLocation) {
 		super(x, y, w, h, imageLocation);
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y = y;
-		setAction(action); 
 	}
 
-	public ClickableGraphic(int x, int y, double scale, String imageLocation, Action action) {
+	public ClickableGraphic(int x, int y, double scale, String imageLocation) {
 		super(x, y, scale, imageLocation);
 		// TODO Auto-generated constructor stub
 		this.x = x;
-		this.y = y;
-		setAction(action); 
+		this.y = y; 
 	}
 
 	@Override

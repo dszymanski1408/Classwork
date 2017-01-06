@@ -28,8 +28,8 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable {
 		// TODO Auto-generated method stub
 		moles = new ArrayList<MoleInterface>();
 		player = getAPlayer();
-		label = new TextLabel(350,220,100,40, "Sample");
-		timeLabel = new TextLabel(360, 40,80,40,"30.0");
+		label = new TextLabel(370,270,100,50, "Sample");
+		timeLabel = new TextLabel(300, 30,100,50,"30.0");
 		viewObjects.add(player);
 		viewObjects.add(timeLabel);
 		viewObjects.add(label);
@@ -46,7 +46,7 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable {
 	public void run(){
 		changeText("Ready...");
 		changeText("Set...");
-		changeText("Go!");
+		changeText("Kerchow!");
 		label.setText("");
 		while(timeLeft > 0){
 			updateTimer();
@@ -75,14 +75,13 @@ public class WackAMoleScreen extends ClickableScreen implements Runnable {
 
 	private void updateAllMoles() {
 		// TODO Auto-generated method stub
-		for(int i = 0; i < moles.size(); i++){
+		for(int i = moles.size()-1; i > -1; i--){
 			MoleInterface m = moles.get(i);
-			int screenTime = m.getAppearanceTime() - 100;
-			m.setAppearanceTime(screenTime);
+			int screenTime = m.getAppearanceTime();
+			m.setAppearanceTime(screenTime - 100);
 			if(m.getAppearanceTime() <= 0){
 				remove(m);
 				moles.remove(m);
-				i--;
 			}
 		}
 	}
