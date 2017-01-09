@@ -3,6 +3,9 @@
  */
 package gui.simon;
 
+import java.awt.Color;
+
+import gui.components.Action;
 import gui.components.Clickable;
 
 /**
@@ -10,5 +13,8 @@ import gui.components.Clickable;
  *
  */
 public interface ButtonInterfaceDavidS extends Clickable {
-
+	public void setColor(Color color);
+	public void setX(int x);
+	public void setY(int y);
+	public void setAction(Action a);
 }
