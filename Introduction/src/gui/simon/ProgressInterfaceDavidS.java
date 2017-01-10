@@ -11,4 +11,7 @@ import gui.components.Visible;
  */
 public interface ProgressInterfaceDavidS extends Visible {
 
+	void gameOver();
+	void setRound(int num);
+	void setSequenceSize(int size);
 }
