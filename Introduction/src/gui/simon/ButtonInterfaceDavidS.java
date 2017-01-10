@@ -17,4 +17,6 @@ public interface ButtonInterfaceDavidS extends Clickable {
 	public void setX(int x);
 	public void setY(int y);
 	public void setAction(Action a);
+	public void highlight();
+	public void dim();
 }

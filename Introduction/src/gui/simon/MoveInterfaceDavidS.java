@@ -9,4 +9,6 @@ package gui.simon;
  */
 public interface MoveInterfaceDavidS {
 
+	ButtonInterfaceDavidS getButton();
+
 }

@@ -84,8 +84,18 @@ public class SimonScreenDavidS extends ClickableScreen implements Runnable {
 						Thread blink = new Thread(new Runnable(){
 							public void run(){
 								b.highlight();
+								Thread.sleep(800);
+								b.dim();
 							}
 						});
+						blink.start();
+						if(b == moves.get(sequenceIndex).getButton()){
+							sequenceIndex++;
+							
+						}
+						else{
+							
+						}
 					}
 				}
 			});
