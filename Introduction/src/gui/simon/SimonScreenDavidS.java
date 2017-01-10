@@ -45,11 +45,28 @@ public class SimonScreenDavidS extends ClickableScreen implements Runnable {
 		playSequence();
 		changeText("Your Turn");
 		changeText("");
+		acceptingInput = true;
+		sequenceIndex = 0;
 	}
 
 	private void playSequence() {
 		// TODO Auto-generated method stub
-		
+		ButtonInterfaceDavidS b = null;
+		for(MoveInterfaceDavidS m: moves){
+			if(b != null){
+				b.dim();
+				b = m.getButton();
+				b.highlight();
+				int sleepTime = (int)((1000/roundNumber + 1) * 2);
+				try {
+					Thread.sleep(sleepTime);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		b.dim();
 	}
 
 	private void changeText(String string) {
